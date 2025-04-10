@@ -1,6 +1,6 @@
-FROM python:3.9
+FROM python:3.12
 
-WORKDIR /root/Jobbot
+WORKDIR /root
 
 
 COPY requirements.txt .
