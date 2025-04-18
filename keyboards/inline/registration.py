@@ -5,7 +5,7 @@ register_key = ReplyKeyboardMarkup(
         [
             KeyboardButton(
                 text="Registration",
-                web_app=WebAppInfo(url="https://katyolusta.uz/webapp/")
+                web_app=WebAppInfo(url="https://katyolusta.uz")
             )
         ]
     ],

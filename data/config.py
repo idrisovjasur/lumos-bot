@@ -4,7 +4,7 @@ BOT_TOKEN='8008351926:AAHNAQtscpuN-EXoHkCV0qldOaCf-lb4kM4'
 DB_USER = "postgres"
 DB_PASS = "52028580Jas...///!!!@###$$$$5678902345678"
 DB_NAME = "lumos"
-DB_HOST = "45.61.51.220"
+DB_HOST = "159.65.41.50"
 
 
 
