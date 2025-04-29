@@ -39,7 +39,8 @@ menu_uz = 'Menyu'
 menu_ru = 'Меню'
 register_ru = "Спасибо за регистрацию!"
 register_uz = "Roʻyxatdan oʻtganingiz uchun tashakkur!"
-start_text = 'Please Registration'
+start_text = ('Пожалуйста, зарегистрируйтесь\n\n'
+              'Ro\'yxatdan o\'tish')
 complaint_text_ru = 'Напишите свою жалобу.'
 complaint_text_uz = 'Shikoyatingizni yozib qoldiring.'
 offer_text_uz = 'Taklifingizni yozib qoldiring.'
