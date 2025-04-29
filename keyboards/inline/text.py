@@ -1,0 +1,21 @@
+organizational_uz = '📧 Tashkiliy ishlar'
+organizational_ru = '📧 Oрганизационные вопросы'
+profile_uz = '👤 Profilim'
+profile_ru = '👤 Мой профиль'
+appeal_uz = '📝 Murojaat'
+appeal_ru = '📝 Обращаться'
+event_uz = '🎇 Maktab tadbirlari'
+event_ru = '🎇 Школьные мероприятия'
+edit_lang_ru = '🔄 изменить язык'
+edit_lang_uz = '🔄 tilni o\'zgartirish'
+complaint_uz = '🛑 Shikoyat'
+complaint_ru = '🛑 Жалоба'
+offer_uz = '📩 Taklif'
+offer_ru = '📩 Предложение'
+question_uz = '❓ Savol'
+question_ru = '❓ Вопрос'
+back_uz = '🔙 Ortga'
+back_ru = '🔙 Назад'
+
+
+

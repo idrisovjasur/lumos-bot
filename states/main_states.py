@@ -1,8 +1,7 @@
 from aiogram.fsm.state import State, StatesGroup
 
-class MainStates(StatesGroup):
+class AppealStates(StatesGroup):
     appeal = State()
-    profile = State()
 
 
 

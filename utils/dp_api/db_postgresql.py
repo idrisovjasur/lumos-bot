@@ -3,6 +3,8 @@ from typing import Union
 import asyncpg
 from asyncpg import Connection
 from asyncpg.pool import Pool
+from django.templatetags.i18n import language
+
 from data import config
 
 class Database:
@@ -57,13 +59,13 @@ class Database:
         ])
         return sql, tuple(parameters.values())
 
-    async def add_user(self, name, surname, phone, class_name, username, telegram_id):
-        sql = "INSERT INTO app_telegramusers (name, surname, phone, class_name, username, telegram_id) VALUES($1, $2, $3, $4, $5, $6) returning *"
-        return await self.execute(sql, name, surname, phone, class_name,  username, telegram_id, fetchrow=True)
+    async def add_user(self, name, surname, phone, class_name, username, telegram_id, language):
+        sql = "INSERT INTO app_telegramusers (name, surname, phone, class_name, username, telegram_id, language) VALUES($1, $2, $3, $4, $5, $6, $7) returning *"
+        return await self.execute(sql, name, surname, phone, class_name,  username, telegram_id, language, fetchrow=True)
 
-    async def add_appeal(self, name, surname, phone, class_name, text):
-        sql = "INSERT INTO app_usersappeal (name, surname, phone, class_name, text) VALUES($1, $2, $3, $4, $5) returning *"
-        return await self.execute(sql, name, surname, phone, class_name, text, fetchrow=True)
+    async def add_appeal(self, name, surname, phone, class_name, text, question_type):
+        sql = "INSERT INTO app_usersappeal (name, surname, phone, class_name, text, question_type) VALUES($1, $2, $3, $4, $5, $6) returning *"
+        return await self.execute(sql, name, surname, phone, class_name, text, question_type, fetchrow=True)
 
     async def select_all_users(self):
         sql = "SELECT * FROM Users"
@@ -78,9 +80,9 @@ class Database:
         sql = "SELECT COUNT(*) FROM Users"
         return await self.execute(sql, fetchval=True)
 
-    async def update_user_username(self, username, telegram_id):
-        sql = "UPDATE Users SET username=$1 WHERE telegram_id=$2"
-        return await self.execute(sql, username, telegram_id, execute=True)
+    async def update_user_language(self, language: str, telegram_id: int):
+        query = "UPDATE app_telegramusers SET language=$1 WHERE telegram_id=$2"
+        await self.pool.execute(query, language, telegram_id)
 
     async def delete_users(self):
         await self.execute("DELETE FROM Users WHERE TRUE", execute=True)
