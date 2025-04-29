@@ -40,7 +40,10 @@ async def edit_user_languages(callback_query: CallbackQuery, state: FSMContext):
 @main_router.message(F.text.in_([appeal_ru, appeal_uz]))
 async def appeal_function(message: Message):
     lang = await get_language(message.from_user.id)
-    await message.answer(text = 'appeal', reply_markup= await appeal_keyboard(lang))
+    if lang == 'ru':
+        await message.answer(text = text.appeal_type_ru, reply_markup= await appeal_keyboard(lang))
+    else:
+        await message.answer(text=text.appeal_type_uz, reply_markup=await appeal_keyboard(lang))
 
 
 @main_router.message(F.text.in_([complaint_ru,
@@ -72,12 +75,14 @@ async def main_appeal_function(message: Message, state: FSMContext):
         await state.set_state(AppealStates.appeal)
 
 @main_router.message(StateFilter('*'), F.text.in_([back_uz, back_ru]))
-async def back_appeal(message: Message):
+async def back_appeal(message: Message, state: FSMContext):
     lang = await get_language(message.from_user.id)
     if lang == 'ru':
         await message.answer(text = text.menu_ru, reply_markup= await main_keyboard('ru'))
+        await state.clear()
     else:
         await message.answer(text = text.menu_uz, reply_markup= await main_keyboard('uz'))
+        await state.clear()
 
 @main_router.message(AppealStates.appeal)
 async def appeal_text_save(message: Message, state: FSMContext):
